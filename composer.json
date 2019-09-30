@@ -1,0 +1,13 @@
+{
+  "name": "fabienlege/nsi-fast-post",
+  "description": "Permet la création de posts par lot",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "NSI Agence ho5",
+          "email": "fabien.lege@ho5group.com"
+      }
+  ],
+  "require": {}
+}
