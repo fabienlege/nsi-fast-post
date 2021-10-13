@@ -51,6 +51,12 @@ class NsiFastPost {
           </select>
             </p>
         <p class="form-field">
+          <label for="post_parent">Status des posts à créer</label>
+          <select id="post_parent" name="post_parent" >
+            <option value="none" selected>(Aucun parent)</option>
+          </select>
+        </p>
+        <p class="form-field">
           <label for="post_status">Status des posts à créer</label>
           <select id="post_status"  >
           <?php foreach ( $post_statuses as $key => $post_status ): ?>
@@ -82,6 +88,7 @@ class NsiFastPost {
       $posts          = preg_split( '/\r\n|[\r\n]/', $_POST['post_titles'] );
       $post_type      = $_POST['post_type'];
       $post_status    = $_POST['post_status'];
+      $post_parent    = $_POST['post_parent'] === "null" ? null : intval( $_POST['post_parent'] );
       $post_content   = null;
       $post_excerpt   = null;
       $menu_order     = 0;
@@ -116,6 +123,7 @@ class NsiFastPost {
           'post_title'     => $post_title,
           'post_content'   => $post_content,
           'post_excerpt'   => $post_excerpt,
+          'post_parent'    => $post_parent,
           'menu_order'     => $menu_order,
           'to_ping'        => $to_ping,
           'comment_status' => $comment_status,
@@ -172,8 +180,10 @@ class NsiFastPost {
           success: function(datas){
             console.log(datas);
             $("#post_model").html(`<option value="none">Aucun modèle</option>`)
+            $("#post_parent").html(`<option value="none">(Aucun parent)</option>`)
             datas.map(item => {
               $("#post_model").append(`<option value="${item.id}">${item.title}</option>`)
+              $("#post_parent").append(`<option value="${item.id}">${item.title}</option>`)
             })
           },
           error:()=>{
