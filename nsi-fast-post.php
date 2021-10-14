@@ -51,14 +51,14 @@ class NsiFastPost {
           </select>
             </p>
         <p class="form-field">
-          <label for="post_parent">Status des posts à créer</label>
+          <label for="post_parent">Post parent</label>
           <select id="post_parent" name="post_parent" >
             <option value="none" selected>(Aucun parent)</option>
           </select>
         </p>
         <p class="form-field">
           <label for="post_status">Status des posts à créer</label>
-          <select id="post_status"  >
+          <select id="post_status" name="post_status" >
           <?php foreach ( $post_statuses as $key => $post_status ): ?>
               <option value="<?=$key?>"><?=$post_status->label?></option>
             <?php endforeach?>
